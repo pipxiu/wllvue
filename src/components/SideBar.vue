@@ -24,12 +24,12 @@
         </li>
         <li>
           <router-link to="/works" :class="{ active: $route.path === '/works' }">
-            <i class="fas fa-briefcase"></i> Works
+            <i class="fas fa-user"></i> Works
           </router-link>
         </li>
         <li>
           <router-link to="/contact" :class="{ active: $route.path === '/contact' }">
-            <i class="fas fa-envelope"></i> Contact
+            <i class="fas fa-user"></i> Contact
           </router-link>
         </li>
       </ul>

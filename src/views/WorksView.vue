@@ -6,7 +6,7 @@
       <h1 class="section-title">作品集</h1>
       
       <div class="section-header my-5">
-        <div class="row justify-content-center g-5">
+        <div class="row justify-content-center">
           <div class="col-lg-6">
             <span class="text-muted text-uppercase">some of my works</span>
             <h2 class="display-1 txt-fx slide-up">摄影作品</h2>
@@ -15,15 +15,22 @@
         </div>
       </div>
       
-      <div class="works-grid">
-        <div 
-          v-for="(work, index) in works" 
-          :key="index" 
-          class="work-item"
-          :style="{ 'background-image': `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${work.image})` }"
-        >
-          <h3>{{ work.title }}</h3>
-          <p>{{ work.category }}</p>
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="row g-4">
+            <div 
+              v-for="(work, index) in works" 
+              :key="index" 
+              class="col-md-6 col-lg-3"
+            >
+              <div class="work-item"
+                :style="{ 'background-image': `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${work.image})` }"
+              >
+                <h3>{{ work.title }}</h3>
+                <p>{{ work.category }}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -67,13 +74,6 @@ export default {
 </script>
 
 <style scoped>
-.works-filter {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-}
-
 .container {
   display: flex;
   min-height: 100vh;
@@ -104,27 +104,19 @@ export default {
   border-radius: 2px;
 }
 
-.works-filter button {
-  background: rgba(30, 41, 59, 0.7);
-  color: #cbd5e1;
-  border: 1px solid rgba(100, 116, 139, 0.2);
-  padding: 8px 20px;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+.section-header {
+  text-align: center;
 }
 
-.works-filter button:hover,
-.works-filter button.active {
-  background: rgba(56, 189, 248, 0.15);
-  color: #38bdf8;
-  border-color: rgba(56, 189, 248, 0.3);
+.section-header h2 {
+  font-size: 3rem;
+  color: #f8fafc;
+  margin-bottom: 1rem;
 }
 
-.works-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
+.section-header p {
+  color: #94a3b8;
+  font-size: 1.2rem;
 }
 
 .work-item {
@@ -157,18 +149,42 @@ export default {
   margin-bottom: 1rem;
 }
 
-.view-btn {
-  background: #38bdf8;
-  color: white;
-  padding: 8px 20px;
-  border-radius: 30px;
-  text-decoration: none;
-  display: inline-block;
-  width: fit-content;
-  transition: all 0.3s ease;
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  .main-content {
+    padding: 2rem;
+  }
+  
+  .work-item {
+    height: 250px;
+  }
 }
 
-.view-btn:hover {
-  background: #0ea5e9;
+@media (max-width: 768px) {
+  .work-item {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 1.5rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .section-header h2 {
+    font-size: 2.5rem;
+  }
+  
+  .work-item {
+    height: 180px;
+    padding: 1.5rem;
+  }
 }
 </style>
